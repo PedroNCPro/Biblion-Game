@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cml01k8m38vln"]
+
+[ext_resource type="Script" uid="uid://bsephwfm44bm7" path="res://game/shop_menu/shop_manager.gd" id="1_n60wl"]
+[ext_resource type="PackedScene" uid="uid://bqy1v2k8j2a25" path="res://util/signal_bus/signal_bus_sender.tscn" id="2_xk240"]
+
+[node name="ShopManager" type="Node2D" unique_id=1060757852]
+script = ExtResource("1_n60wl")
+
+[node name="SignalBusSender" parent="." unique_id=1721126377 instance=ExtResource("2_xk240")]
+signal_prefix = "shop_manager_"
+
+[connection signal="item_bought" from="." to="SignalBusSender" method="connect_signal"]
+[connection signal="next_level_pressed" from="." to="SignalBusSender" method="connect_signal"]

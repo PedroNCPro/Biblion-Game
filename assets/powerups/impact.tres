@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://co8k1ma7w6355"]
+
+[ext_resource type="Shader" uid="uid://euh82qkyumfs" path="res://assets/powerups/impact.gdshader" id="1_kxttp"]
+[ext_resource type="Texture2D" uid="uid://b65vkxjfjp4rc" path="res://assets/powerups/fire_clr.tres" id="2_53trj"]
+[ext_resource type="Texture2D" uid="uid://cpqobja2bsaj1" path="res://assets/powerups/fire_noise.tres" id="3_026ki"]
+[ext_resource type="Texture2D" uid="uid://bqdxai13l58v8" path="res://assets/powerups/vegetal_clr.tres" id="4_38qk6"]
+[ext_resource type="Texture2D" uid="uid://c4ji7t585j4jk" path="res://assets/powerups/lightning_clr.tres" id="5_3qn2e"]
+[ext_resource type="Texture2D" uid="uid://b1x18ld283tnr" path="res://assets/powerups/water_clr.tres" id="6_040bq"]
+[ext_resource type="Texture2D" uid="uid://c1pe2yikgflhe" path="res://assets/powerups/air_noise.tres" id="7_0dtvi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r46po"]
+noise_type = 3
+seed = 16
+frequency = 0.0869
+offset = Vector3(0, 275.86, 0)
+fractal_octaves = 4
+fractal_lacunarity = 2.225
+fractal_gain = 0.695
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lmcic"]
+noise = SubResource("FastNoiseLite_r46po")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_kxttp")
+shader_parameter/which_elem = 1
+shader_parameter/t = 0.0
+shader_parameter/lightning_grad = ExtResource("5_3qn2e")
+shader_parameter/fire_grad = ExtResource("2_53trj")
+shader_parameter/water_grad = ExtResource("6_040bq")
+shader_parameter/leaf_grad = ExtResource("4_38qk6")
+shader_parameter/lightning_noise = SubResource("NoiseTexture2D_lmcic")
+shader_parameter/fire_noise = ExtResource("3_026ki")
+shader_parameter/water_noise = ExtResource("7_0dtvi")
+shader_parameter/t_reaction = 0.0
+shader_parameter/which_a = 1
+shader_parameter/which_b = 1

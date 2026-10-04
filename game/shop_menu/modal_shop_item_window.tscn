@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://b0mgopcnvgraw"]
+
+[ext_resource type="Theme" uid="uid://lkk6y8g6lrv0" path="res://resources/global_themes/current_theme.tres" id="1_htryr"]
+[ext_resource type="Script" uid="uid://d1k538muviepv" path="res://game/shop_menu/modal_shop_item_window.gd" id="1_rm6vh"]
+[ext_resource type="Texture2D" uid="uid://bd0i7fgi5dulu" path="res://assets/icon.svg" id="2_l0q1o"]
+[ext_resource type="StyleBox" uid="uid://cu8toan3mk4ld" path="res://assets/outer_panel.tres" id="2_n5hb8"]
+[ext_resource type="StyleBox" uid="uid://dkbo28cwo6amh" path="res://assets/inner_panel.tres" id="3_htryr"]
+
+[node name="ModalShopItemWindow" type="Control" unique_id=793837409 node_paths=PackedStringArray("buy_button")]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_htryr")
+script = ExtResource("1_rm6vh")
+buy_button = NodePath("BuyButton")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=267727039]
+layout_mode = 0
+offset_left = -66.0
+offset_top = -55.0
+offset_right = 712.0
+offset_bottom = 1214.0
+color = Color(0.2, 0.2, 0.2, 0.31764707)
+
+[node name="Back" type="Button" parent="ColorRect" unique_id=2099201844]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 778.0
+offset_bottom = 1265.0
+
+[node name="WindowBackground" type="Panel" parent="." unique_id=1598237804]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 418.0
+offset_right = 558.0
+offset_bottom = 771.0
+theme_override_styles/panel = ExtResource("2_n5hb8")
+
+[node name="Back" type="Button" parent="." unique_id=68616487]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 416.0
+offset_right = 560.0
+offset_bottom = 471.0
+theme_type_variation = &"CloseButton"
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="BuyButton" type="Button" parent="." unique_id=1899726162]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 686.0
+offset_right = 407.0
+offset_bottom = 758.0
+text = "Buy"
+
+[node name="Panel" type="Panel" parent="." unique_id=326328117]
+modulate = Color(0.06708798, 0, 0.06708798, 1)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 486.0
+offset_right = 515.0
+offset_bottom = 638.0
+theme_override_styles/panel = ExtResource("3_htryr")
+
+[node name="ItemImage" type="TextureRect" parent="." unique_id=1922358441]
+visible = false
+layout_mode = 0
+offset_left = 125.0
+offset_top = 436.0
+offset_right = 165.0
+offset_bottom = 476.0
+texture = ExtResource("2_l0q1o")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Panel2" type="Panel" parent="." unique_id=494835051]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 400.0
+offset_right = 461.0
+offset_bottom = 440.0
+
+[node name="Name" type="Label" parent="." unique_id=1243208760]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 402.0
+offset_right = 429.0
+offset_bottom = 438.0
+theme_override_font_sizes/font_size = 28
+text = "Item name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=1499289899]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 494.0
+offset_right = 505.0
+offset_bottom = 632.0
+theme_override_font_sizes/normal_font_size = 24
+text = "« Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ColorRect/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

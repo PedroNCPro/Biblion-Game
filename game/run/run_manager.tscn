@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://chl0c2lvafrq7"]
+
+[ext_resource type="Script" uid="uid://dehulayw1u7ju" path="res://game/run/run_manager.gd" id="1_h3nti"]
+[ext_resource type="Script" uid="uid://hmyk6lwfony8" path="res://resources/run_progression/run_progression.gd" id="2_d02me"]
+[ext_resource type="PackedScene" uid="uid://b4665yy0lwvt5" path="res://util/signal_bus/signal_bus_receiver.tscn" id="2_eh37m"]
+[ext_resource type="Resource" uid="uid://df3rgq4rvqni1" path="res://resources/run_progression/very_easy.tres" id="3_3r640"]
+[ext_resource type="PackedScene" uid="uid://b0ooa1wymm3k8" path="res://game/level/level_generator.tscn" id="3_xvcvy"]
+[ext_resource type="Resource" uid="uid://y6he7hswjsrm" path="res://resources/run_progression/easy.tres" id="4_1adc4"]
+[ext_resource type="Resource" uid="uid://chmj0w36vis57" path="res://resources/run_progression/medium.tres" id="5_eg8e5"]
+[ext_resource type="Resource" uid="uid://jotgjo1lt0io" path="res://resources/run_progression/hard.tres" id="6_vkuut"]
+[ext_resource type="Resource" uid="uid://cwc3p8hcn4801" path="res://resources/run_progression/very_hard.tres" id="7_mr1su"]
+[ext_resource type="PackedScene" uid="uid://c0hsy6u3o3kiq" path="res://game/level/grid.tscn" id="10_eg8e5"]
+[ext_resource type="PackedScene" uid="uid://bgqr6a5l1ohly" path="res://game/level/keyboard.tscn" id="11_vkuut"]
+[ext_resource type="PackedScene" uid="uid://bjk1mgath82r3" path="res://game/level/background.tscn" id="12_mr1su"]
+
+[node name="RunManager" type="Node2D" unique_id=2011992443 node_paths=PackedStringArray("level_generator") groups=["run_manager"]]
+script = ExtResource("1_h3nti")
+run_progression_list = Array[ExtResource("2_d02me")]([ExtResource("3_3r640"), ExtResource("4_1adc4"), ExtResource("5_eg8e5"), ExtResource("6_vkuut"), ExtResource("7_mr1su")])
+level_generator = NodePath("LevelGenerator")
+
+[node name="SignalBusReceiver" parent="." unique_id=1996817024 instance=ExtResource("2_eh37m")]
+
+[node name="LevelGenerator" parent="." unique_id=2132408830 instance=ExtResource("3_xvcvy")]
+grid_scene = ExtResource("10_eg8e5")
+keyboard_scene = ExtResource("11_vkuut")
+background_scene = ExtResource("12_mr1su")
+
+[connection signal="level_manager_level_lost" from="SignalBusReceiver" to="." method="_on_level_manager_level_lost"]
+[connection signal="level_manager_level_won" from="SignalBusReceiver" to="." method="_on_level_manager_level_won"]
+[connection signal="main_menu_play_pressed" from="SignalBusReceiver" to="." method="_on_main_menu_play_pressed"]
+[connection signal="shop_manager_item_bought" from="SignalBusReceiver" to="." method="_on_shop_manager_item_bought"]
+[connection signal="shop_manager_next_level_pressed" from="SignalBusReceiver" to="." method="_on_shop_manager_next_level_pressed"]
+[connection signal="winning_menu_next_level_pressed" from="SignalBusReceiver" to="." method="_on_winning_menu_next_level_pressed"]

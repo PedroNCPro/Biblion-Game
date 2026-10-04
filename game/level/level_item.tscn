@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cqidsvruhokvb"]
+
+[ext_resource type="Script" uid="uid://cwlwpspgwqn5p" path="res://game/level/level_item.gd" id="1_ra08s"]
+[ext_resource type="Texture2D" uid="uid://bqlci3hunnwng" path="res://assets/icon.svg" id="2_qq7dq"]
+
+[node name="LevelItem" type="Control" unique_id=1839918906]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ra08s")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1432532416]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 367.0
+offset_right = 369.0
+offset_bottom = 495.0
+toggle_mode = true
+texture_normal = ExtResource("2_qq7dq")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1493588178]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -855.0
+offset_right = 43.0
+offset_bottom = -792.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1804512113]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=742296990]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Lorem ipsum dolor sit amet,"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="toggled" from="TextureButton" to="." method="_on_texture_button_toggled"]

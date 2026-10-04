@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bjfglhbeer4l7"]
+
+[ext_resource type="PackedScene" uid="uid://bqwrt0yk58q3d" path="res://game/main_menu/menu_windows/menu_window.tscn" id="1_twuik"]
+
+[node name="CreditsWindow" unique_id=1375118631 instance=ExtResource("1_twuik")]
+
+[node name="WindowContent" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1536343653) index="0" unique_id=1243591664]
+theme_override_constants/separation = 50
+
+[node name="Label" parent="PanelContainer/MarginContainer/WindowContent" index="0" unique_id=1840616644]
+text = "Credits"
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/WindowContent" index="1" unique_id=862184451]
+layout_mode = 2
+text = "IGR WORDLE (2026)
+by
+Alex, Francisco, Mathieu, Pedro
+
+Made with ❤️
+in Palaiseau 🇫🇷"
+horizontal_alignment = 1
+vertical_alignment = 1

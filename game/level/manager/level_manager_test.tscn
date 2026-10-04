@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c362h4uhvx6sm"]
+
+[ext_resource type="Script" uid="uid://j18mtq2kkfnj" path="res://game/level/manager/level_manager_test.gd" id="1_1y6ow"]
+[ext_resource type="PackedScene" uid="uid://cbfgjolpavjft" path="res://game/level/level_generator.tscn" id="3_ntai4"]
+[ext_resource type="PackedScene" uid="uid://c0hsy6u3o3kiq" path="res://game/level/grid.tscn" id="4_y2dic"]
+[ext_resource type="PackedScene" uid="uid://bgqr6a5l1ohly" path="res://game/level/keyboard.tscn" id="5_f4oy5"]
+[ext_resource type="PackedScene" uid="uid://bjk1mgath82r3" path="res://game/level/background.tscn" id="6_fcflg"]
+
+[node name="LevelManagerTest" type="Node2D" unique_id=327929795 node_paths=PackedStringArray("generator")]
+script = ExtResource("1_1y6ow")
+generator = NodePath("LevelGenerator")
+
+[node name="LevelGenerator" parent="." unique_id=2132408830 instance=ExtResource("3_ntai4")]
+grid_scene = ExtResource("4_y2dic")
+keyboard_scene = ExtResource("5_f4oy5")
+background_scene = ExtResource("6_fcflg")
+min_word_size = 3
+max_word_size = 3
+attempts = 4

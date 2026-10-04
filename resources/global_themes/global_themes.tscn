@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c3h8n4srjr3ft"]
+
+[ext_resource type="Script" uid="uid://qcas2f1wr78j" path="res://resources/global_themes/global_themes.gd" id="1_7vpc5"]
+[ext_resource type="Theme" uid="uid://bnon5g0gdijq8" path="res://resources/global_themes/regular_text.tres" id="2_5ru2w"]
+[ext_resource type="Theme" uid="uid://qy4su4i313nl" path="res://resources/global_themes/current_theme.tres" id="3_g5qoy"]
+[ext_resource type="Theme" uid="uid://b6fss6lsto4to" path="res://resources/global_themes/main_theme_lc.tres" id="4_asniu"]
+[ext_resource type="Theme" uid="uid://fqhkadh1ookt" path="res://resources/global_themes/main_theme_hc.tres" id="5_v08uh"]
+
+[node name="GlobalThemes" type="Node" unique_id=1967609675]
+script = ExtResource("1_7vpc5")
+regular_text_theme = ExtResource("2_5ru2w")
+main_color_1 = Color(0.08627451, 0.5568628, 0.13333334, 1)
+current_theme = ExtResource("3_g5qoy")
+main_theme_lc = ExtResource("4_asniu")
+main_theme_hc = ExtResource("5_v08uh")

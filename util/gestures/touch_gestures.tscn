@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cxdg0yiumvkqb"]
+
+[ext_resource type="Script" uid="uid://dee5ryb6km0hk" path="res://util/gestures/touch_gestures.gd" id="1_oq0ut"]
+[ext_resource type="PackedScene" uid="uid://bqy1v2k8j2a25" path="res://util/signal_bus/signal_bus_sender.tscn" id="2_r0ed5"]
+
+[node name="TouchGestures" type="Node2D" unique_id=1720384620]
+script = ExtResource("1_oq0ut")
+
+[node name="SignalBusSender" parent="." unique_id=1721126377 instance=ExtResource("2_r0ed5")]
+signal_prefix = "touch_gestures_"
+
+[connection signal="drag_detected" from="." to="SignalBusSender" method="connect_signal"]
+[connection signal="pinch_detected" from="." to="SignalBusSender" method="connect_signal"]

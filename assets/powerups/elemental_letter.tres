@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cy7xscfqwya20"]
+
+[ext_resource type="Shader" uid="uid://bbyk6w2lfgqwy" path="res://assets/powerups/elemental_letter.gdshader" id="1_pgjbl"]
+[ext_resource type="Texture2D" uid="uid://c3s3a8wqnp0el" path="res://assets/powerups/air_clr.tres" id="2_h3b0n"]
+[ext_resource type="Texture2D" uid="uid://c1pe2yikgflhe" path="res://assets/powerups/air_noise.tres" id="3_nftsr"]
+[ext_resource type="Texture2D" uid="uid://pbsxwpbm8gc2" path="res://assets/powerups/earth_clr.tres" id="4_gywyd"]
+[ext_resource type="Texture2D" uid="uid://csw40c372ygyg" path="res://assets/powerups/earth_noise.tres" id="5_xhmi1"]
+[ext_resource type="Texture2D" uid="uid://b65vkxjfjp4rc" path="res://assets/powerups/fire_clr.tres" id="6_gd8c2"]
+[ext_resource type="Texture2D" uid="uid://cpqobja2bsaj1" path="res://assets/powerups/fire_noise.tres" id="7_kk8d6"]
+[ext_resource type="Texture2D" uid="uid://c4ji7t585j4jk" path="res://assets/powerups/lightning_clr.tres" id="8_bhglf"]
+[ext_resource type="Texture2D" uid="uid://bqdxai13l58v8" path="res://assets/powerups/vegetal_clr.tres" id="9_lieha"]
+[ext_resource type="Texture2D" uid="uid://b1x18ld283tnr" path="res://assets/powerups/water_clr.tres" id="10_wih00"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_pgjbl")
+shader_parameter/fire_grad = ExtResource("6_gd8c2")
+shader_parameter/air_grad = ExtResource("2_h3b0n")
+shader_parameter/lightning_grad = ExtResource("8_bhglf")
+shader_parameter/water_grad = ExtResource("10_wih00")
+shader_parameter/vegetal_grad = ExtResource("9_lieha")
+shader_parameter/earth_grad = ExtResource("4_gywyd")
+shader_parameter/fire_noise = ExtResource("7_kk8d6")
+shader_parameter/air_noise = ExtResource("3_nftsr")
+shader_parameter/earth_noise = ExtResource("5_xhmi1")
+shader_parameter/base_elem = 0

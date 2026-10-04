@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c2nte72hxcrri"]
+
+[ext_resource type="Script" uid="uid://cevmybpk2wmpp" path="res://game/level/milestone.gd" id="1_hbj2t"]
+
+[node name="Milestone" type="Control" unique_id=2063269080]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hbj2t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1941818066]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 40.0
+
+[node name="MilestoneText" type="Label" parent="HBoxContainer" unique_id=2145925284]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Random description"
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=201518]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.01
+
+[node name="MilestoneCoins" type="Label" parent="HBoxContainer" unique_id=689891972]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 16
+text = "Rd Co"
+horizontal_alignment = 2

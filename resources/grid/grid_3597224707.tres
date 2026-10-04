@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GridResource" format=3]
+
+[ext_resource type="Script" path="res://resources/grid/grid_resource.gd" id="1_1bv5n"]
+
+[resource]
+script = ExtResource("1_1bv5n")
+grid_size = Vector2i(5, 4)
+cell_layout = Dictionary[Vector2i, int]({
+Vector2i(0, 0): 0,
+Vector2i(0, 1): 0,
+Vector2i(0, 2): 0,
+Vector2i(1, 1): 0,
+Vector2i(1, 2): 0,
+Vector2i(1, 3): 0,
+Vector2i(2, 1): 0,
+Vector2i(2, 2): 0,
+Vector2i(2, 3): 0,
+Vector2i(3, 0): 0,
+Vector2i(3, 1): 0,
+Vector2i(3, 2): 0,
+Vector2i(4, 0): 0
+})
+metadata/_custom_type_script = "uid://dj5l3hhcq02ng"

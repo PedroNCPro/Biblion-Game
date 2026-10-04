@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bpq1adqtxt4iq"]
+
+[ext_resource type="Script" uid="uid://baxsvvo3lee1s" path="res://util/cell_state_machine/cell_state_machine.gd" id="1_nb2tg"]
+[ext_resource type="Script" uid="uid://bk1dao8phgebt" path="res://game/level/cell_state/ice_state.gd" id="1_o18o7"]
+
+[node name="CellStateMachine" type="Node" unique_id=64147097]
+script = ExtResource("1_nb2tg")
+
+[node name="Ice" type="Node" parent="." unique_id=1390485090]
+script = ExtResource("1_o18o7")

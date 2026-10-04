@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c0kgi4s31tv3d"]
+
+[ext_resource type="Script" uid="uid://c658n4ghc7jtb" path="res://util/grid_editor/grid_editor.gd" id="1_rqv84"]
+[ext_resource type="PackedScene" uid="uid://23occinmjclh" path="res://util/grid_editor/editor_cell.tscn" id="2_cqe2q"]
+[ext_resource type="Resource" uid="uid://bs6dliv8yxtcd" path="res://resources/grid/grid_smile.tres" id="2_wryuq"]
+[ext_resource type="PackedScene" uid="uid://b4665yy0lwvt5" path="res://util/signal_bus/signal_bus_receiver.tscn" id="3_uq5i1"]
+
+[node name="GridEditor" type="Control" unique_id=2062166691 node_paths=PackedStringArray("grid_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqv84")
+grid_size_x = 22
+grid_size_y = 18
+grid_resource = ExtResource("2_wryuq")
+grid_container = NodePath("VBoxContainer/ScrollContainer/GridContainer")
+editor_cell_scene = ExtResource("2_cqe2q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=581739953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="VBoxContainer" unique_id=606945513]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Save grid layout"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1581117375]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer" unique_id=207068468]
+layout_mode = 2
+columns = 22
+
+[node name="SignalBusReceiver" parent="." unique_id=1996817024 instance=ExtResource("3_uq5i1")]
+
+[connection signal="pressed" from="VBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="editor_cell_pressed" from="SignalBusReceiver" to="." method="_on_editor_cell_pressed"]

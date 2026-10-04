@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://bki84y31fsu55"]
+
+[ext_resource type="StyleBox" uid="uid://7c35g5guc261" path="res://assets/keyboard_hover.tres" id="1_rxj8c"]
+[ext_resource type="StyleBox" uid="uid://2qye7nowilr2" path="res://assets/keyboard_normal.tres" id="2_rmha1"]
+[ext_resource type="StyleBox" uid="uid://bp8yjs0e2catx" path="res://assets/keyboard_pressed.tres" id="3_48mjt"]
+
+[resource]
+default_font_size = 20
+Button/styles/hover = ExtResource("1_rxj8c")
+Button/styles/normal = ExtResource("2_rmha1")
+Button/styles/pressed = ExtResource("3_48mjt")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bvhm5oirtwko"]
+
+[ext_resource type="Script" uid="uid://gcn53np5ijjy" path="res://scripts/test_game.gd" id="1_nl0sk"]
+[ext_resource type="Resource" uid="uid://dhqp6ovmtbjsm" path="res://resources/level/test_level.tres" id="2_gb8nm"]
+
+[node name="TestGame" type="Node2D" unique_id=723681012]
+script = ExtResource("1_nl0sk")
+level_resource = ExtResource("2_gb8nm")

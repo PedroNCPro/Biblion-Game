@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dy1bci3rg7qji"]
+
+[ext_resource type="PackedScene" uid="uid://db1vwod7r5k1t" path="res://game/power_up/animated_char.tscn" id="1_87ofm"]
+[ext_resource type="Script" uid="uid://bapa2he7psir4" path="res://game/level/score.gd" id="1_ei4c0"]
+[ext_resource type="Theme" path="res://resources/global_themes/current_theme.tres" id="1_gg0jk"]
+
+[node name="Score" type="Control" unique_id=768050888]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gg0jk")
+script = ExtResource("1_ei4c0")
+
+[node name="Panel" type="Panel" parent="." unique_id=2027821409]
+layout_mode = 0
+offset_left = -111.0
+offset_right = 114.0
+offset_bottom = 40.0
+
+[node name="AnimatedChar" parent="." unique_id=1376181817 instance=ExtResource("1_87ofm")]
+layout_mode = 0
+offset_top = 20.0
+offset_bottom = 20.0

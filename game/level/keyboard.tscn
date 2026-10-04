@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bgqr6a5l1ohly"]
+
+[ext_resource type="Theme" uid="uid://b6fss6lsto4to" path="res://resources/global_themes/main_theme_lc.tres" id="1_fwk1y"]
+[ext_resource type="Script" uid="uid://b2rrxnacshgix" path="res://game/level/keyboard.gd" id="1_m6qkj"]
+[ext_resource type="Theme" uid="uid://bki84y31fsu55" path="res://assets/keyboard_theme.tres" id="2_1ey7e"]
+[ext_resource type="PackedScene" uid="uid://bqy1v2k8j2a25" path="res://util/signal_bus/signal_bus_sender.tscn" id="2_77wxd"]
+
+[node name="Keyboard" type="Control" unique_id=1574060102]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_fwk1y")
+script = ExtResource("1_m6qkj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1012518237]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -54.0
+offset_right = 56.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="row1" type="HBoxContainer" parent="VBoxContainer" unique_id=1120380783]
+layout_mode = 2
+alignment = 1
+
+[node name="row2" type="HBoxContainer" parent="VBoxContainer" unique_id=2143151766]
+layout_mode = 2
+alignment = 1
+
+[node name="row3" type="HBoxContainer" parent="VBoxContainer" unique_id=1301926067]
+layout_mode = 2
+alignment = 1
+
+[node name="rowEnterDel" type="HBoxContainer" parent="VBoxContainer" unique_id=610934483]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 300
+alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=715402498]
+layout_mode = 0
+offset_left = 172.67499
+offset_top = 32.559998
+offset_right = 251.675
+offset_bottom = 128.55992
+theme_override_constants/separation = 18
+
+[node name="Del" type="Button" parent="VBoxContainer2" unique_id=1680678328]
+layout_mode = 2
+theme = ExtResource("2_1ey7e")
+theme_override_constants/h_separation = 5
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_constants/line_spacing = 0
+text = "DELETE
+"
+
+[node name="Enter" type="Button" parent="VBoxContainer2" unique_id=2023936444]
+layout_mode = 2
+theme = ExtResource("2_1ey7e")
+theme_override_constants/align_to_largest_stylebox = 1
+text = "ENTER"
+
+[node name="SignalBusSender" parent="." unique_id=1721126377 instance=ExtResource("2_77wxd")]
+signal_prefix = "keyboard_"
+
+[connection signal="character_pressed" from="." to="SignalBusSender" method="connect_signal"]
+[connection signal="delete_pressed" from="." to="SignalBusSender" method="connect_signal"]
+[connection signal="enter_pressed" from="." to="SignalBusSender" method="connect_signal"]
+[connection signal="button_up" from="VBoxContainer2/Del" to="." method="_on_del_button_up"]
+[connection signal="button_up" from="VBoxContainer2/Enter" to="." method="_on_enter_button_up"]

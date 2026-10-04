@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://croassrioiwi2"]
+
+[ext_resource type="StyleBox" uid="uid://wolpgjuepmxy" path="res://assets/main_menu_buttons_normal.tres" id="1_hpa6i"]
+[ext_resource type="StyleBox" uid="uid://c46mom6rg4866" path="res://assets/main_menu_buttons_hover.tres" id="1_wwmw8"]
+[ext_resource type="StyleBox" uid="uid://3s40kg1737x1" path="res://assets/main_menu_buttons_pressed.tres" id="3_qxe4g"]
+
+[resource]
+Button/styles/hover = ExtResource("1_wwmw8")
+Button/styles/normal = ExtResource("1_hpa6i")
+Button/styles/pressed = ExtResource("3_qxe4g")

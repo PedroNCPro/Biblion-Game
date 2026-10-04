@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://db1vwod7r5k1t"]
+
+[ext_resource type="Script" uid="uid://cc2dcjocc3bur" path="res://game/power_up/animated_char.gd" id="1_v35ln"]
+[ext_resource type="Material" uid="uid://cy7xscfqwya20" path="res://assets/powerups/elemental_letter.tres" id="2_150kp"]
+
+[sub_resource type="Curve" id="Curve_v35ln"]
+_limits = [-18.0, 18.0, 0.0, 0.3]
+_data = [Vector2(0, -4.7683716e-07), 0.0, 0.0, 0, 0, Vector2(0.07615386, -18), 0.0, 0.0, 0, 0, Vector2(0.15000002, 10.658824), 0.0, 0.0, 0, 0, Vector2(0.22538464, -4.533333), 0.0, 0.0, 0, 0, Vector2(0.3, -4.7683716e-07), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_150kp"]
+_limits = [0.8, 1.2, 0.0, 0.3]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.07923077, 1.2), 0.0, 0.0, 0, 0, Vector2(0.15307693, 0.90864795), 0.0, 0.0, 0, 0, Vector2(0.22615384, 1.054324), 0.0, 0.0, 0, 0, Vector2(0.3, 0.99943155), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="AnimatedChar" type="Control" unique_id=1376181817]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v35ln")
+rotation_anim = SubResource("Curve_v35ln")
+scale_anim = SubResource("Curve_150kp")
+
+[node name="Movable" type="Control" parent="." unique_id=929566901]
+anchors_preset = 0
+offset_left = -39.0
+offset_top = -39.0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="Movable" unique_id=345489196]
+material = ExtResource("2_150kp")
+layout_mode = 0
+offset_left = -19.0
+offset_top = 16.0
+offset_right = 97.0
+offset_bottom = 62.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimDelay" type="Timer" parent="." unique_id=2138483255]
+one_shot = true
+
+[connection signal="timeout" from="AnimDelay" to="." method="_on_anim_delay_timeout"]

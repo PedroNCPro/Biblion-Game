@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://cwhvccfudrlg"]
+
+[ext_resource type="FontFile" uid="uid://b1s8jgquufkxc" path="res://assets/Coolvetica Rg.otf" id="1_g5th0"]
+
+[resource]
+default_font = ExtResource("1_g5th0")
+metadata/BackGroundPanelColor = Color(0.13, 0.13, 0.13, 1)

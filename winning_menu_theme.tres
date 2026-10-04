@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://bjb8rfrsie661"]
+
+[ext_resource type="StyleBox" uid="uid://dkbo28cwo6amh" path="res://assets/inner_panel.tres" id="1_oaehq"]
+[ext_resource type="StyleBox" uid="uid://cu8toan3mk4ld" path="res://assets/outer_panel.tres" id="2_c3gds"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_oaehq")
+PanelContainer/styles/panel = ExtResource("2_c3gds")

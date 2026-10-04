@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dbnhpgtkbc2f7"]
+
+[ext_resource type="PackedScene" uid="uid://bqwrt0yk58q3d" path="res://game/main_menu/menu_windows/menu_window.tscn" id="1_n3cvf"]
+[ext_resource type="Script" uid="uid://bmohflai3edgq" path="res://game/main_menu/menu_windows/options_window/options_window.gd" id="2_xm7yo"]
+[ext_resource type="PackedScene" uid="uid://bviheak4ftht6" path="res://game/main_menu/menu_windows/options_window/volume_box/volume_box.tscn" id="3_yqimj"]
+[ext_resource type="Theme" path="res://resources/global_themes/current_theme.tres" id="4_pnflk"]
+
+[node name="OptionsWindow" unique_id=1375118631 instance=ExtResource("1_n3cvf")]
+script = ExtResource("2_xm7yo")
+
+[node name="WindowContent" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1536343653) index="0" unique_id=1243591664]
+theme_override_constants/separation = 30
+
+[node name="Label" parent="PanelContainer/MarginContainer/WindowContent" index="0" unique_id=1840616644]
+text = "Options"
+
+[node name="VolumeBox" parent="PanelContainer/MarginContainer/WindowContent" index="1" unique_id=2046647714 instance=ExtResource("3_yqimj")]
+layout_mode = 2
+label = "Global Volume"
+bus_name = "Master"
+
+[node name="HighContrastButton" type="CheckButton" parent="PanelContainer/MarginContainer/WindowContent" index="2" unique_id=1939810222]
+layout_mode = 2
+text = "Enable high contrast    "
+
+[node name="UseAZERTYButton" type="CheckButton" parent="PanelContainer/MarginContainer/WindowContent" index="3" unique_id=910527585]
+layout_mode = 2
+disabled = true
+text = "Use AZERTY"
+
+[node name="CloseButton" parent="PanelContainer" parent_id_path=PackedInt32Array(891594517) index="1" unique_id=1094423363]
+theme = ExtResource("4_pnflk")
+
+[connection signal="toggled" from="PanelContainer/MarginContainer/WindowContent/HighContrastButton" to="." method="_on_high_contrast_button_toggled"]

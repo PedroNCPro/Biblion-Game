@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://dhqp6ovmtbjsm"]
+
+[ext_resource type="Script" uid="uid://chdiyp7evvrav" path="res://resources/level/level_resource.gd" id="1_7k1sp"]
+[ext_resource type="PackedScene" uid="uid://bjk1mgath82r3" path="res://scenes/background.tscn" id="1_c66h4"]
+[ext_resource type="PackedScene" uid="uid://cu1qcg01266av" path="res://scenes/grid.tscn" id="2_7plyk"]
+[ext_resource type="PackedScene" uid="uid://bgqr6a5l1ohly" path="res://scenes/keyboard.tscn" id="3_2fqpn"]
+
+[resource]
+script = ExtResource("1_7k1sp")
+background_scene = ExtResource("1_c66h4")
+keyboard_scene = ExtResource("3_2fqpn")
+grid_scene = ExtResource("2_7plyk")
+metadata/_custom_type_script = "uid://chdiyp7evvrav"

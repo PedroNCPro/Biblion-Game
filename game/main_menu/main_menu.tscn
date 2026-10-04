@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://dww1ftslqf567"]
+
+[ext_resource type="Script" uid="uid://cw7e8iw7run3s" path="res://game/main_menu/main_menu.gd" id="1_3shxk"]
+[ext_resource type="Theme" uid="uid://d0fscebadxhpp" path="res://resources/global_themes/current_theme.tres" id="2_gxh41"]
+[ext_resource type="PackedScene" uid="uid://g7wqu2uey4mx" path="res://game/main_menu/menu_windows/stats_window/stats_window.tscn" id="3_3shxk"]
+[ext_resource type="PackedScene" uid="uid://dbnhpgtkbc2f7" path="res://game/main_menu/menu_windows/options_window/options_window.tscn" id="4_bws42"]
+[ext_resource type="PackedScene" uid="uid://bjfglhbeer4l7" path="res://game/main_menu/menu_windows/credits_window/credits_window.tscn" id="5_3f7m4"]
+[ext_resource type="PackedScene" uid="uid://btv2xh6l0pvnk" path="res://game/main_menu/menu_windows/how_to_play_window/how_to_play.tscn" id="6_u35ho"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa53l"]
+bg_color = Color(0.15686275, 0.75686276, 0.8392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3pqo"]
+bg_color = Color(1, 1, 1, 0.85490197)
+
+[node name="MainMenu" type="PanelContainer" unique_id=991109612]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oa53l")
+script = ExtResource("1_3shxk")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=372528418]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=483197248]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2090063986]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "BIBLION !"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1658179984]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("2_gxh41")
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1054139883]
+layout_mode = 2
+disabled = true
+text = "Continue"
+
+[node name="NewRunButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=690126240]
+layout_mode = 2
+text = "New Run"
+
+[node name="StatsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=447451986]
+layout_mode = 2
+text = "Stats"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=728409733]
+layout_mode = 2
+text = "Options"
+
+[node name="HowToPlayButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1545665172]
+layout_mode = 2
+text = "How to Play"
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=852339136]
+layout_mode = 2
+text = "Credits"
+
+[node name="StatsWindow" parent="." unique_id=1375118631 instance=ExtResource("3_3shxk")]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3pqo")
+
+[node name="OptionsWindow" parent="." unique_id=1080359808 instance=ExtResource("4_bws42")]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3pqo")
+
+[node name="CreditsWindow" parent="." unique_id=716252879 instance=ExtResource("5_3f7m4")]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3pqo")
+
+[node name="HowToPlayWindow" parent="." unique_id=538214713 instance=ExtResource("6_u35ho")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NewRunButton" to="." method="_on_new_run_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

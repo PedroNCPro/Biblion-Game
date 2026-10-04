@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://n0dpnwncyxlj"]
+
+[ext_resource type="Script" uid="uid://byaqov2n12fjb" path="res://game/level/letter_box.gd" id="1_w7ff6"]
+[ext_resource type="PackedScene" uid="uid://db1vwod7r5k1t" path="res://game/power_up/animated_char.tscn" id="2_qvapa"]
+[ext_resource type="Material" uid="uid://dr2nowduc1u04" path="res://assets/powerups/elemental.tres" id="2_scr7o"]
+[ext_resource type="Shader" uid="uid://cus4isjs4gr63" path="res://assets/powerups/bg.gdshader" id="3_g4x7v"]
+[ext_resource type="PackedScene" uid="uid://bpq1adqtxt4iq" path="res://util/cell_state_machine/cell_state_machine.tscn" id="3_xooru"]
+[ext_resource type="Material" uid="uid://co8k1ma7w6355" path="res://assets/powerups/impact.tres" id="4_scr7o"]
+
+[sub_resource type="Theme" id="Theme_xooru"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r46po"]
+resource_local_to_scene = true
+shader = ExtResource("3_g4x7v")
+shader_parameter/which = 0
+shader_parameter/clr = Vector3(1, 1, 1)
+
+[node name="LetterBox" type="Control" unique_id=573317305 node_paths=PackedStringArray("state_machine")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+theme = SubResource("Theme_xooru")
+script = ExtResource("1_w7ff6")
+state_machine = NodePath("CellStateMachine")
+metadata/_edit_horizontal_guides_ = [54.0]
+metadata/_edit_vertical_guides_ = [54.0]
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=400592472]
+material = ExtResource("2_scr7o")
+layout_mode = 0
+offset_left = -4.700989
+offset_top = -6.700987
+offset_right = 60.680305
+offset_bottom = 58.051483
+
+[node name="PlacedLetter" type="Control" parent="." unique_id=390515488]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LetterBackground" type="ColorRect" parent="PlacedLetter" unique_id=766862870]
+material = SubResource("ShaderMaterial_r46po")
+layout_mode = 0
+offset_left = 2.3653984
+offset_top = 2.2702599
+offset_right = 52.08357
+offset_bottom = 51.27026
+
+[node name="Letter" parent="PlacedLetter" unique_id=1376181817 instance=ExtResource("2_qvapa")]
+layout_mode = 0
+offset_left = 26.712143
+offset_top = 26.982166
+offset_right = 26.712143
+offset_bottom = 26.982166
+
+[node name="Diacritic" parent="PlacedLetter" unique_id=1550424499 instance=ExtResource("2_qvapa")]
+visible = false
+layout_mode = 0
+offset_left = 27.325
+offset_top = 21.455
+offset_right = 27.325
+offset_bottom = 21.455
+scale = Vector2(0.74, 0.74)
+
+[node name="BonusPoints" type="Label" parent="." unique_id=1550608380]
+z_index = 3
+layout_mode = 0
+offset_left = 54.0
+offset_top = -13.0
+offset_right = 85.0
+offset_bottom = 11.0
+rotation = 0.47822022
+theme_override_constants/outline_size = 6
+text = "+10"
+
+[node name="DiacriticBonusPoints" type="Label" parent="." unique_id=272777453]
+z_index = 3
+layout_mode = 0
+offset_left = 54.0
+offset_top = -13.0
+offset_right = 85.0
+offset_bottom = 11.0
+rotation = 0.47822022
+theme_override_constants/outline_size = 6
+text = "+10"
+
+[node name="Again" type="Label" parent="." unique_id=1491600022]
+z_index = 3
+layout_mode = 0
+offset_left = 54.0
+offset_top = -13.0
+offset_right = 85.0
+offset_bottom = 11.0
+rotation = 0.47822022
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 10
+text = "Again !"
+
+[node name="CellStateMachine" parent="." unique_id=64147097 instance=ExtResource("3_xooru")]
+
+[node name="Impact" type="ColorRect" parent="." unique_id=212257536]
+z_index = 4
+material = ExtResource("4_scr7o")
+layout_mode = 0
+offset_left = -13.358413
+offset_top = -15.31109
+offset_right = 58.344566
+offset_bottom = 56.39189
+scale = Vector2(1.125, 1.125)
+
+[node name="SwapElement" type="Timer" parent="." unique_id=1910347032]
+wait_time = 1.48
+one_shot = true
+
+[node name="WaitForReaction" type="Timer" parent="." unique_id=102708565]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="timeout" from="SwapElement" to="." method="_on_swap_element_timeout"]
+[connection signal="timeout" from="WaitForReaction" to="." method="_on_wait_for_reaction_timeout"]

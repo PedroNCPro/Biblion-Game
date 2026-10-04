@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://q5l8yasue8ia"]
+
+[ext_resource type="Script" uid="uid://btg2riiw4ixnv" path="res://game/main_menu/menu_tab/menu_tab.gd" id="1_3ac5i"]
+[ext_resource type="PackedScene" uid="uid://dbnhpgtkbc2f7" path="res://game/main_menu/menu_windows/options_window/options_window.tscn" id="1_s4exe"]
+[ext_resource type="Theme" uid="uid://c86v3y4xe4u4n" path="res://resources/global_themes/regular_text.tres" id="2_0dggn"]
+[ext_resource type="Theme" uid="uid://hww0xbtexkwp" path="res://resources/global_themes/current_theme.tres" id="2_d7odv"]
+[ext_resource type="PackedScene" uid="uid://bqwrt0yk58q3d" path="res://game/main_menu/menu_windows/menu_window.tscn" id="5_32dv8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcyss"]
+bg_color = Color(0.6, 0.6, 0.6, 0.27058825)
+
+[node name="MenuTab" type="CanvasLayer" unique_id=1756768620]
+process_mode = 3
+layer = 2
+script = ExtResource("1_3ac5i")
+
+[node name="MenuTabContainer" type="PanelContainer" parent="." unique_id=318220248]
+visible = false
+custom_minimum_size = Vector2(200, 250)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_d7odv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcyss")
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuTabContainer" unique_id=1769779889]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuTabContainer/PanelContainer" unique_id=160407705]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuTabContainer/PanelContainer/MarginContainer" unique_id=859200521]
+layout_mode = 2
+theme = ExtResource("2_0dggn")
+
+[node name="Label" type="Label" parent="MenuTabContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=925194132]
+layout_mode = 2
+text = "      Menu tab"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuTabContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=243032844]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="OptionsButton" type="Button" parent="MenuTabContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=696948307]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"MenuTabButtons"
+text = "Options"
+
+[node name="LeaveRunButton" type="Button" parent="MenuTabContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=349283765]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"MenuTabButtons"
+text = "Leave run"
+
+[node name="MenuTabButton" type="Button" parent="." unique_id=543154044]
+custom_minimum_size = Vector2(60, 0)
+theme = ExtResource("2_d7odv")
+theme_override_constants/line_spacing = -25
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "--
+--
+--"
+
+[node name="OptionsWindow" parent="." unique_id=1375118631 instance=ExtResource("1_s4exe")]
+visible = false
+
+[node name="LeaveWindow" parent="." unique_id=646379736 instance=ExtResource("5_32dv8")]
+visible = false
+
+[node name="WindowContent" parent="LeaveWindow/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(646379736, 1536343653) index="0" unique_id=1243591664]
+theme_override_constants/separation = 30
+
+[node name="Label" parent="LeaveWindow/PanelContainer/MarginContainer/WindowContent" index="0" unique_id=1840616644]
+text = "Leave run"
+
+[node name="Label2" type="Label" parent="LeaveWindow/PanelContainer/MarginContainer/WindowContent" index="1" unique_id=2136373022]
+layout_mode = 2
+text = "Are you sure you want to leave this run?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeaveWindow/PanelContainer/MarginContainer/WindowContent" index="2" unique_id=1977138281]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="LeaveButton" type="Button" parent="LeaveWindow/PanelContainer/MarginContainer/WindowContent/HBoxContainer" unique_id=1900878393]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 35
+text = "Leave"
+
+[node name="CancelButton" type="Button" parent="LeaveWindow/PanelContainer/MarginContainer/WindowContent/HBoxContainer" unique_id=2051603512]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CancelButton"
+theme_override_font_sizes/font_size = 35
+text = "Cancel"
+
+[connection signal="pressed" from="MenuTabContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuTabContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/LeaveRunButton" to="." method="_on_leave_run_button_pressed"]
+[connection signal="toggled" from="MenuTabButton" to="." method="_on_menu_tab_button_toggled"]
+[connection signal="pressed" from="LeaveWindow/PanelContainer/MarginContainer/WindowContent/HBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="LeaveWindow/PanelContainer/MarginContainer/WindowContent/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+
+[editable path="LeaveWindow"]

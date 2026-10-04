@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RunProgression" format=3 uid="uid://y6he7hswjsrm"]
+
+[ext_resource type="Script" uid="uid://hmyk6lwfony8" path="res://resources/run_progression/run_progression.gd" id="1_hbqou"]
+
+[resource]
+script = ExtResource("1_hbqou")
+level_start = 4
+min_word_size = 3
+attempts = 7
+metadata/_custom_type_script = "uid://hmyk6lwfony8"

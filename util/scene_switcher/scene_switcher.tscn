@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cn25v5353cw3i"]
+
+[ext_resource type="Script" uid="uid://c0ffywrovk5ws" path="res://util/scene_switcher/scene_switcher.gd" id="1_42yyo"]
+[ext_resource type="PackedScene" uid="uid://dww1ftslqf567" path="res://game/main_menu/main_menu.tscn" id="2_airgu"]
+[ext_resource type="PackedScene" uid="uid://cdvqs3plrkrsm" path="res://game/shop_menu/shop_template.tscn" id="4_jt3mo"]
+
+[node name="SceneSwitcher" type="Node" unique_id=1514832549]
+script = ExtResource("1_42yyo")
+main_menu_scene = ExtResource("2_airgu")
+shop_scene = ExtResource("4_jt3mo")

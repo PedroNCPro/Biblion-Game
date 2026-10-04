@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://btv2xh6l0pvnk"]
+
+[ext_resource type="Script" uid="uid://cm8tqhuc53opk" path="res://game/main_menu/menu_windows/menu_window.gd" id="1_ed6lx"]
+[ext_resource type="Theme" uid="uid://pe4nne3fw7nn" path="res://resources/global_themes/current_theme.tres" id="2_dxc0t"]
+[ext_resource type="Theme" uid="uid://det7bfw0smqbj" path="res://resources/global_themes/regular_text.tres" id="3_gu3tj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3pqo"]
+bg_color = Color(1, 1, 1, 0.85490197)
+
+[node name="Control" type="Control" unique_id=538214713]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MiBombo" type="PanelContainer" parent="." unique_id=1375118631]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3pqo")
+script = ExtResource("1_ed6lx")
+
+[node name="PanelContainer" type="PanelContainer" parent="MiBombo" unique_id=891594517]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_dxc0t")
+theme_type_variation = &"MenuPopupContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="MiBombo/PanelContainer" unique_id=1536343653]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="WindowContent" type="VBoxContainer" parent="MiBombo/PanelContainer/MarginContainer" unique_id=1243591664]
+layout_mode = 2
+theme = ExtResource("3_gu3tj")
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="MiBombo/PanelContainer/MarginContainer/WindowContent" unique_id=1840616644]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MiBombo/PanelContainer/MarginContainer/WindowContent" unique_id=862184451]
+layout_mode = 2
+text = "Input an english word then press enter :
+your letters will give you points.
+Reach the target score to win !
+
+Like in Wordle, there is a mystery word.
+Find it to double your score.
+
+After each level, you earn coins :
+you can spend them in the shop.
+Diacritics make letters score more points.
+
+Letters may place elements on the grid.
+Two elements can trigger a reaction :
+They can give points, increase your multiplier,
+ or even reactivate letters !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MiBombo/PanelContainer" unique_id=1094423363]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"CloseButton"
+theme_override_font_sizes/font_size = 20
+text = "X"
+icon_alignment = 1
+
+[connection signal="pressed" from="MiBombo/PanelContainer/CloseButton" to="MiBombo" method="_on_close_button_pressed"]

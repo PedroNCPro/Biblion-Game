@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://g7wqu2uey4mx"]
+
+[ext_resource type="PackedScene" uid="uid://bqwrt0yk58q3d" path="res://game/main_menu/menu_windows/menu_window.tscn" id="1_n5cfq"]
+[ext_resource type="Script" uid="uid://o2bjl5ahf13a" path="res://game/main_menu/menu_windows/stats_window/stats_window.gd" id="2_fr8d3"]
+
+[node name="StatsWindow" unique_id=1375118631 instance=ExtResource("1_n5cfq")]
+script = ExtResource("2_fr8d3")
+
+[node name="WindowContent" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1536343653) index="0" unique_id=1243591664]
+theme_override_constants/separation = 50
+
+[node name="Label" parent="PanelContainer/MarginContainer/WindowContent" index="0" unique_id=1840616644]
+text = "Stats"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/WindowContent" index="1" unique_id=309232559]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/WindowContent/HBoxContainer" index="0" unique_id=2079141079]
+layout_mode = 2
+text = "Highest score:"
+
+[node name="HighestScoreLabel" type="Label" parent="PanelContainer/MarginContainer/WindowContent/HBoxContainer" index="1" unique_id=56011963]
+layout_mode = 2
+text = "0"

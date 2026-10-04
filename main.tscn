@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cftaeb25ya241"]
+
+[ext_resource type="Script" uid="uid://c7xdehpddckwg" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" path="res://game/level/level.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://clhkh6p1yd0xt" path="res://game/old_main_menu/main_menu_ui.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D" unique_id=481944964 node_paths=PackedStringArray("main_menu_ui", "level")]
+script = ExtResource("1_ig7tw")
+main_menu_ui = NodePath("MainMenuUi")
+level = NodePath("Level")
+metadata/_edit_vertical_guides_ = [650.0, 325.0]
+
+[node name="Level" parent="." unique_id=1641894213 instance=ExtResource("3_1bvp3")]
+visible = false
+
+[node name="MainMenuUi" parent="." unique_id=1041060977 instance=ExtResource("3_h2yge")]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://23occinmjclh"]
+
+[ext_resource type="Script" uid="uid://wgrx2ndquniy" path="res://util/grid_editor/editor_cell.gd" id="1_gj4f1"]
+[ext_resource type="PackedScene" uid="uid://bqy1v2k8j2a25" path="res://util/signal_bus/signal_bus_sender.tscn" id="2_wul6w"]
+
+[node name="Panel" type="Panel" unique_id=463607039 node_paths=PackedStringArray("button", "color_rect", "sender")]
+custom_minimum_size = Vector2(50, 50)
+size_flags_horizontal = 3
+script = ExtResource("1_gj4f1")
+button = NodePath("Button")
+color_rect = NodePath("ColorRect")
+sender = NodePath("SignalBusSender")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1558658545]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Button" type="Button" parent="." unique_id=1030950613]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SignalBusSender" parent="." unique_id=1721126377 instance=ExtResource("2_wul6w")]
+signal_prefix = "editor_cell_"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
