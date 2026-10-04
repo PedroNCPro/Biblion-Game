@@ -1,78 +1,147 @@
-# Biblion-Game
+# Biblion
 
-Final project for the Human-Computer Interaction course at Télécom Paris.
+Biblion is a word-puzzle game made with the **Godot Engine**, developed as the final project of the **Human-Computer Interaction (IG05)** course at **Télécom Paris**. It keeps the intuitive color-feedback mechanic of the famous [*Wordle*](https://www.nytimes.com/games/wordle/index.html), but replaces the once-a-day format with an endless, level-based run featuring a score system, coins, a shop and combinable power-ups.
 
-## Overview
+<img src="images/combo.png" height="500"/>
 
-Biblion is a word-based puzzle game inspired by classic word-guessing games, but with a richer board and a progression system. The player solves a hidden word by filling a grid row by row, while the game evaluates each guess, rewards the player with points, and triggers special letter effects that can boost the score or modify the board.
+> ⚠️ **Status:** academic prototype. The game is not fully finished and may be unstable at higher levels (see [Known limitations](#-known-limitations)).
+
+---
+
+## Authors
+
+- Alex Onceanu
+- Francisco de Castro Leal Henriques
+- Mathieu Senart
+- Pedro Nascimento Coêlho
+
+---
+
+
+## Table of Contents
+
+- [Running the game](#running-the-game)
+- [How to play](#how-to-play)
+  - [Power-ups](#power-ups)
+  - [Progression loop](#progression-loop)
+- [Features](#features)
+- [Known limitations](#known-limitations)
+- [Report](#report)
+- [Credits and license](#credits-and-license)
+- [Screenshots](#screenshots)
+
+---
 
 ## Running the game
 
-This game is a GODOT project, hence GODOT should be use to run the game or export it as an executable file.
+The game is a **Godot** project.
 
-The game is not completely finished and might present instability on higher levels.
+1. Install [Godot Engine](https://godotengine.org/download) (version 4.6.1 or higher).
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/PedroNCPro/Biblion-Game.git
+   ```
+3. Open Godot, click **Import**, and select the `Godot_files/project.godot` file.
+4. Press **F5** to run the game, or use **Project → Export** to build an executable or mobile package.
 
-## Core gameplay
+> 📱 The game was originally designed for mobile, but it can also work for desktop devices. If you test it in the editor with a mouse, remember that touch targets are sized for fingers.
 
-The player starts from the main menu and launches a run. Each run is made of several levels.
+---
 
-1. A level is created from a generated grid.
-2. The last row of the grid defines the possible letters of the secret word.
-3. The game picks a hidden word from the dictionary that matches the size of that final row.
-4. The player types letters using the on-screen keyboard or keyboard input.
-5. When a row is complete, the game validates the guess and compares each letter to the secret word.
+## How to play
 
-### Guess evaluation
+1. Start a run from the main menu. A run is made of several levels.
+2. Each level generates a **grid with a custom, irregular shape**. The **last row** defines the length of the secret word.
+3. The game picks a hidden word from the dictionary matching that length (3 to 6 letters depending on the grid shape).
+4. Type your guess using the on-screen keyboard or your physical keyboard. The grid is filled **one row at a time (top-down) and one cell at a time (left-right)**.
+5. When a row is complete, each letter is evaluated:
 
-Each letter in a submitted guess is marked as:
+| Color | Meaning | Points |
+|---|---|---|
+| 🟩 Green | Correct letter, correct position | **+10** |
+| 🟨 Yellow | Letter is in the word, wrong position | **+5** |
+| ⬜ Grey | Letter is not in the word | **+1** |
 
-- Green: the letter is in the secret word and in the correct position.
-- Yellow: the letter is in the secret word but in the wrong position.
-- Grey: the letter is not present in the secret word.
+6. Points are then modified by **power-ups** (see below).
+7. Reach the level's **score target** before running out of attempts to win. The definition of the secret word is displayed on the results screen, even if you didn't find it.
 
-The game also awards points:
+> 💡 The level does not stop when you find the word: extra rows give you room to farm points and set up combos.
 
-- Correct letter: +10
-- Misplaced letter: +5
-- Wrong letter: +1
+### Power-ups
 
-The score is then modified by bonuses and special effects, such as diacritics and elemental reactions.
+Power-ups are attached to letters and are built from the combination of three sub-types, each with its own visual language so the player can read what a letter does at a glance:
 
-## Grid and word structure
+| Sub-type | Role | Visual representation |
+|---|---|---|
+| **Element** (fire, water, earth, air) | Triggers elemental reactions | Texture on the letter |
+| **Point modification** | Adds, multiplies or repeats a bonus (diacritic) | Diacritic on the letter |
+| **Area of effect** | Affects rows, columns, crosses or neighbouring cells | Background texture of the cell |
 
-The board is not just a simple fixed Wordle grid. It is a custom grid where each cell can contain:
+Effects can chain: when a power-up activates another one, the new effect is queued and resolved before the game moves on to the next letter. Infinite loops are possible (a letter that reactivates another that reactivates the first), but the game guarantees they will not freeze it.
 
-- a letter,
-- a diacritic bonus,
-- an elemental effect,
-- a pattern effect that applies to surrounding cells.
+### Progression loop
 
-Some cells can trigger effects on rows, columns, crosses, or neighbouring tiles. These effects can:
+```
+play a level → earn points → earn coins → buy power-ups in the shop → next, harder level
+```
 
-- increase the score,
-- transform letters,
-- repeat a bonus,
-- trigger elemental reactions such as fire, water, earth, and air combinations.
+After each level you receive coins (including bonuses for milestones). In the **shop**, a small random selection of unique power-ups is offered. Tap an icon to see its description and buy it.
 
-This creates a more dynamic puzzle than a pure word-guessing game.
+---
 
-## Winning and losing
+## Features
 
-A level is won when the player reaches the score target for that level or when the correct word is guessed with enough accumulated points.
+- Infinite level generation with randomized, non-uniform grids
+- Results screen with the definition of the secret word
+- Power-up system combining element, point-modification and area-of-effect types
+- Shop that generates random unique power-ups
+- VFX that show how active power-ups affect the current guess
+- Gesture controls to navigate the grid (pinch to zoom, drag to move)
+- High-contrast UI option and a unified UI theme
 
-A level is lost when the player fails to reach the threshold before the available attempts are exhausted.
+---
 
-The game then shows a win/lose state and allows the player to continue to the next phase of progression.
 
-## Progression and shop system
+## Known limitations
 
-After a level, the player earns coins. Those coins can be spent in a shop to buy permanent or temporary power-ups that affect future runs.
+**Planned features not implemented:**
+- Temporary and other power-up categories (only permanent power-ups exist)
+- Visual indicator for the next cell to be filled
+- Save system / "Continue" a run (started, but not finished)
 
-This gives the game a roguelike progression loop:
+**Other known issues:**
+- Possible instability at higher levels
+- Some visuals could be further polished
+- The level doesn't end after the secret word is found (intentional, but players found it confusing)
 
-- play a level,
-- earn coins,
-- buy upgrades,
-- start a new level or new run,
-- improve your score and your chances of success.
+**Ideas for future work:** improve usability on mobile, rebalance early levels, interactive tutorial, and complete the missing features.
 
+---
+
+## Report
+
+For more detailed information about the project, see the project report: [`Project_Report`](Project_Report.pdf).
+
+---
+
+## Credits and license
+
+- Word list and definitions come from the [Wordset dictionary](https://github.com/wordset/wordset-dictionary), licensed under [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/).
+- Inspired by [Wordle](https://www.nytimes.com/games/wordle/index.html) (The New York Times) and by roguelikes such as [*Balatro*](https://www.playbalatro.com/).
+- The original development repository is available at [Alex-Onceanu/IGRWordle](https://github.com/Alex-Onceanu/IGRWordle).
+
+
+## Screenshots
+
+<img src="images/menu.png" height="500"/>
+<img src="images/high_contrast_option.png" height="500"/>
+<img src="images/standard_run.png" height="500"/>
+<img src="images/zoom.png" height="500"/>
+<img src="images/level_end.png" height="500"/>
+<img src="images/shop.png" height="500"/>
+<img src="images/shop_buy.png" height="500"/>
+<img src="images/lightning_fx.png" height="500"/>
+<img src="images/inventory.png" height="500"/>
+<img src="images/elemental_fusion.png" height="500"/>
+<img src="images/leave_run.png" height="500"/>
+<img src="images/stats.png" height="500"/>
